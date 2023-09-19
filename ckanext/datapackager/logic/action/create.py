@@ -43,6 +43,10 @@ def package_create_from_datapackage(context, data_dict):
     dp = _load_and_validate_datapackage(url=url, upload=upload)
     dataset_dict = converter.package(dp.to_dict())
 
+    extras = data_dict.get('extras')
+    if extras:
+        del dataset_dict['extras']
+
     owner_org = data_dict.get('owner_org')
     if owner_org:
         dataset_dict['owner_org'] = owner_org
