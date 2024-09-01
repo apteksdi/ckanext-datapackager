@@ -1,8 +1,36 @@
 {% import 'macros/form.html' as form %}
 {% block basic_fields_url %}
-  {% set is_upload = (data.url_type == 'upload') %}
-  {{ form.image_upload(data, errors, field_url='url', field_upload='upload', field_clear='clear_upload', is_upload_enabled=h.uploads_enabled(), is_url=data.url and not is_upload, is_upload=is_upload, upload_label=_('File'), url_label=_('URL')) }}
-{% endblock %}
+
+  <div class="control-group form-group">
+    <label for="field-private" class="control-label">{{ _('Metadata Indikator') }}</label>
+        <div class="controls">
+            <select id="url" name="url" data-module="autocomplete">
+                <option value="">Pilih salah satu metadata yang tersedia</option>
+            </select>
+        </div>
+    </div>
+  
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const url = document.getElementById('url');
+
+    fetch('https://datahub.data.go.id/data/static/metadata/list.json')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.url;
+                option.textContent = item.name;
+                url.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+});
+</script>
+
+  {% endblock %}
 
 {% extends 'package/snippets/package_basic_fields.html' %}
 

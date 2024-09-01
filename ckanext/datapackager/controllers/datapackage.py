@@ -60,9 +60,11 @@ def import_datapackage():
         )
 
         if toolkit.check_ckan_version(min_version="2.9"):
-            return toolkit.redirect_to('dataset.read', id=dataset['name'])
+            #return toolkit.redirect_to('statistik.read', id=dataset['name'])
+            return toolkit.redirect_to('statistik.edit', id=dataset['name'])
         else:
-            return toolkit.redirect_to('dataset_read', id=dataset['name'])
+            #return toolkit.redirect_to('statistik_read', id=dataset['name'])
+            return toolkit.redirect_to('statistik.edit', id=dataset['name'])
 
     except toolkit.ValidationError as e:
         errors = e.error_dict
