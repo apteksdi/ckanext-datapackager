@@ -3,5 +3,4 @@ cchardet
 jsonschema==2.6.0
 python-slugify==1.2.4
 datapackage
-frictionless-ckan-mapper>=1.0.7
 six
