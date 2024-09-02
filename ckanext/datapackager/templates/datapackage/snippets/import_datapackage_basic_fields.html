@@ -14,7 +14,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const url = document.getElementById('url');
 
-    fetch('https://datahub.data.go.id/data/static/metadata/list.json')
+    fetch('https://qc.data.go.id/api/skdn/mms/list/067')
         .then(response => response.json())
         .then(data => {
             data.forEach(item => {
