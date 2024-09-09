@@ -360,6 +360,14 @@ def package_create_from_datapackage(context, data_dict):
     if produsen_data_name:
         dataset_dict['produsen_data_name'] = produsen_data_name
 
+    produsen_data_city_code = data_dict.get('produsen_data_city_code')
+    if produsen_data_city_code:
+        dataset_dict['produsen_data_city_code'] = produsen_data_city_code
+
+    produsen_data_province_code = data_dict.get('produsen_data_province_code')
+    if produsen_data_province_code:
+        dataset_dict['produsen_data_province_code'] = produsen_data_province_code
+
     total_msvar = data_dict.get('total_msvar')
     if total_msvar:
         dataset_dict['total_msvar'] = total_msvar
